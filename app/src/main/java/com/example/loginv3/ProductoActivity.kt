@@ -49,9 +49,6 @@ class ProductoActivity : AppCompatActivity() {
             menuViewModel.product.value.active = isChecked
         }
 
-
-        // Problema: El value solo recoge el data class declarado, por ende viene vacio
-        // los txt tambien quedan vacios ya que el ui esta atado al data class y por ende no recupera la data del txt
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 menuViewModel.product.collect {

@@ -45,12 +45,16 @@ class MainActivity : AppCompatActivity() {
             val password = findViewById<TextView>(R.id.passwordTxt).text.toString()
             val msg = loginViewModel.login(user, password)
 
-            // Muestra mensaje
-            Snackbar.make(it, msg, Snackbar.LENGTH_LONG).show()
-
-            // Pasa a la sig activity
             val nextActivity = Intent(this, ProductoActivity::class.java)
-            startActivity(nextActivity)
+
+            if (msg != "Access Denied!") {
+                // Pasa a la sig activity
+                startActivity(nextActivity)
+            } else {
+                // Muestra mensaje
+                Snackbar.make(it, msg, Snackbar.LENGTH_LONG).show()
+            }
+
         }
     }
 }
